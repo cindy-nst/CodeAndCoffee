@@ -40,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
-            getSupportActionBar().setTitle("Registration");
+            getSupportActionBar().setTitle("Sign Up");
             toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
         }
 

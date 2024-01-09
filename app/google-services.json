@@ -1,14 +1,13 @@
 {
   "project_info": {
-    "project_number": "862655318931",
-    "firebase_url": "https://codeandcoffee-b9459-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "codeandcoffee-b9459",
-    "storage_bucket": "codeandcoffee-b9459.appspot.com"
+    "project_number": "408660231511",
+    "project_id": "codeandcoffee-412d8",
+    "storage_bucket": "codeandcoffee-412d8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:862655318931:android:ce8b4197f72eaab4a3f666",
+        "mobilesdk_app_id": "1:408660231511:android:225808d7c239c2e56e6a12",
         "android_client_info": {
           "package_name": "com.example.codeandcoffee"
         }
@@ -16,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBvHfrYI61QCZSPPfsuSLtzB7S5E_jt4jc"
+          "current_key": "AIzaSyB7KZ6qHc68M2mUdrwZRjrPFPZ7-i2DkGI"
         }
       ],
       "services": {
