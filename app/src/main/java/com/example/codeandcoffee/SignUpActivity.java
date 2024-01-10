@@ -16,12 +16,15 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.example.codeandcoffee.model.UserDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -29,6 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputEditText etUsername, etEmail, etPassword, etPhoneNumber, etBirthday;
     private Button btnSignUp;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
 
 
     @Override
@@ -52,6 +56,8 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btn_signup);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("user_details");
+
 
         etBirthday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +106,7 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                addUser(etUsername.getText().toString(), "+60" + etPhoneNumber.getText().toString(), etEmail.getText().toString(), etBirthday.getText().toString());
                                 Log.d(TAG, "createUserWithEmail:success");
                                 Toast.makeText(SignUpActivity.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
                             } else {
@@ -108,6 +115,20 @@ public class SignUpActivity extends AppCompatActivity {
                             }
                         }
                     });
+        }
+    }
+
+    private void addUser(String username, String phoneNumber, String email, String birthday) {
+        String userId = databaseReference.push().getKey();
+        UserDetails userDetails = new UserDetails(userId, username, email, phoneNumber, birthday);
+        if (!TextUtils.isEmpty(userId)) {
+            databaseReference.child(userId).setValue(userDetails);
+            etUsername.setText("");
+            etPhoneNumber.setText("");
+            etEmail.setText("");
+            etPhoneNumber.setText("");
+            etBirthday.setText("");
+            etPassword.setText("");
         }
     }
 }
