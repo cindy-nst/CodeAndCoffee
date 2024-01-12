@@ -41,17 +41,17 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        btnReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                strEmail = etResetEmail.getText().toString().trim();
-                if (!TextUtils.isEmpty(strEmail)) {
-
-                } else {
-                    etResetEmail.setError("Email field can't be empty");
-                }
-            }
-        });
-    }
+//        btnReset.setOnClickListener(new View.OnClickListener() {
+//            @Override
+////            public void onClick(View view) {
+////                strEmail = etResetEmail.getText().toString().trim();
+////                if (!TextUtils.isEmpty(strEmail)) {
+////
+////                } else {
+////                    etResetEmail.setError("Email field can't be empty");
+////                }
+////            }
+////        });
+  }
 
 }
