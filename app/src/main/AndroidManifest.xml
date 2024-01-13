@@ -13,6 +13,11 @@
         android:theme="@style/Theme.CodeAndCoffee"
         tools:targetApi="31">
         <activity
+            android:name=".FeedbackActivity"
+            android:exported="false"
+            android:label="@string/title_activity_feedback"
+            android:theme="@style/Theme.CodeAndCoffee" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
