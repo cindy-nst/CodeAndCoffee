@@ -27,7 +27,7 @@
             android:label="@string/title_activity_feedback"
             android:theme="@style/Theme.CodeAndCoffee" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".OrderActivity"
             android:exported="false" />
         <activity
             android:name=".ForgotPasswordActivity"
