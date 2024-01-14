@@ -7,7 +7,7 @@
     tools:context=".SettingsActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar_settings"
+        android:id="@+id/toolbar_HelpCentre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#855748"
@@ -28,7 +28,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_settings" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_HelpCentre" />
 
     <TextView
         android:id="@+id/tv_push_notification"

@@ -45,4 +45,49 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+
+    <string name="terms_and_conditions">
+    <![CDATA[
+        Terms and Conditions for Code&Coffee App
+
+        \n\nLast Updated: [14/1/2024]
+
+        \n\nWelcome to the Code&Coffee app! By accessing or using our app, you agree to comply with and be bound by the following terms and conditions of use. If you do not agree to these terms, please do not use the app.
+
+        \n\nAcceptance of Terms
+
+        \nBy using the Code&Coffee app, you agree to be bound by these Terms and Conditions, our Privacy Policy, and any other policies or guidelines posted on the app.
+        \n\nUser Registration
+
+        \nIn order to access certain features of the app, you may be required to register for an account. You agree to provide accurate and current information during the registration process and to update such information to keep it accurate and current.
+        \n\nCode of Conduct
+
+        \nUsers are expected to conduct themselves in a respectful and professional manner within the app. Any form of harassment, offensive behavior, or violation of community guidelines may result in the termination of your account.
+        \n\nIntellectual Property
+
+        \nThe Code&Coffee app and its content, including but not limited to text, graphics, logos, and images, are the property of Code&Coffee and are protected by intellectual property laws.
+        \n\nUser-Generated Content
+
+        \nUsers may contribute content to the app, such as comments and posts. By submitting content, you grant Code&Coffee a non-exclusive, royalty-free, worldwide, perpetual license to use, display, and distribute the content.
+        \n\nPrivacy
+
+        \nYour use of the Code&Coffee app is also governed by our Privacy Policy, which can be found [here].
+        \n\nTermination
+
+        \nCode&Coffee reserves the right to terminate or suspend your account and access to the app at any time, with or without cause.
+        \n\nDisclaimer of Warranty
+
+        \nThe Code&Coffee app is provided "as is" without any warranties, express or implied. Code&Coffee does not warrant that the app will be error-free or uninterrupted.
+        \n\nLimitation of Liability
+
+        \nIn no event shall Code&Coffee be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues.
+        \n\nGoverning Law
+
+        \nThese Terms and Conditions are governed by and construed in accordance with the laws of [Your Jurisdiction].
+        \n\nContact Information
+
+        \nIf you have any questions or concerns about these Terms and Conditions, you may contact us at [empatbudakbijak@email.com].
+        \n\nBy using the Code&Coffee app, you acknowledge that you have read and understood these Terms and Conditions and agree to be bound by them.
+        ]]>
+    </string>
 </resources>
