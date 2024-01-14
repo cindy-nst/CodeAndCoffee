@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-                if (dialog.getWindow() != null){
+                if (dialog.getWindow() != null) {
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
                 }
                 dialog.show();
