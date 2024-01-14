@@ -23,9 +23,14 @@
         android:id="@+id/cl_user"
         android:layout_width="411dp"
         android:layout_height="181dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
         android:background="@android:color/white"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="114dp">
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_account">
 
         <ImageView
             android:id="@+id/img_user"
@@ -79,18 +84,17 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_below="@id/cl_user"
-        android:background="@android:color/darker_gray" />
-
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="410dp"
         android:layout_height="435dp"
+        android:layout_marginEnd="1dp"
         android:background="#e7d9d1"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="296dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_user">
 
 
         <RelativeLayout
@@ -131,7 +135,7 @@
                     android:layout_height="30dp"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="0dp"
-                    android:text="Setting"
+                    android:text="Settings"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
