@@ -2,13 +2,22 @@ package com.example.codeandcoffee.ui.menu;
 
 import android.os.Bundle;
 
+import com.example.codeandcoffee.adapter.MenuAdapter;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.codeandcoffee.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +60,7 @@ public class MenuFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRetainInstance(true);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -61,6 +71,32 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_menu, container, false);
+
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_menu);
+        GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(),2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        List<CoffeeMenuItem> allcoffeeMenu = generateCoffeeMenu();
+        MenuAdapter menuadapter = new MenuAdapter(allcoffeeMenu, getContext());
+        recyclerView.setAdapter(menuadapter);
+
+        return view;
     }
+
+    private List<CoffeeMenuItem> generateCoffeeMenu() {
+        List<CoffeeMenuItem> coffeeMenu = new ArrayList<>();
+
+        // Sample coffee menu items with image resource IDs
+        coffeeMenu.add(new CoffeeMenuItem("Espresso", 2.99, R.drawable.espressocoffee));
+        coffeeMenu.add(new CoffeeMenuItem("Latte", 4.49, R.drawable.lattecoffee));
+        coffeeMenu.add(new CoffeeMenuItem("Cappuccino", 3.99, R.drawable.cappuccinocoffee));
+        coffeeMenu.add(new CoffeeMenuItem("Americano", 3.29, R.drawable.americanocoffee));
+
+        // Add more coffee items as needed
+
+        return coffeeMenu;
+    }
+
+
 }
