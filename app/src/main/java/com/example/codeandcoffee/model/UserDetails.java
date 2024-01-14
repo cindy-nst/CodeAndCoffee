@@ -1,5 +1,7 @@
 package com.example.codeandcoffee.model;
 
+import androidx.annotation.NonNull;
+
 public class UserDetails {
     private String userId;
     private String username;
@@ -56,5 +58,11 @@ public class UserDetails {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "UserId = " + userId + ", Username = " + username;
     }
 }
