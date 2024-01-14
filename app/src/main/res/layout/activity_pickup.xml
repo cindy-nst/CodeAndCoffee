@@ -68,7 +68,6 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="8dp"
-                            android:src="@tools:sample/avatars"
                             app:srcCompat="@drawable/coffee_icon"
                             tools:layout_marginBottom="8dp" />
 
@@ -86,7 +85,6 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="8dp"
-                            android:src="@tools:sample/avatars"
                             app:srcCompat="@drawable/shop"
                             tools:layout_marginBottom="8dp" />
 
@@ -124,7 +122,6 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="8dp"
-                            android:src="@tools:sample/avatars"
                             app:srcCompat="@drawable/baseline_access_time_24"
                             tools:layout_marginBottom="8dp" />
 
@@ -302,7 +299,6 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="8dp"
-                    android:src="@tools:sample/avatars"
                     app:srcCompat="@drawable/card_icon" />
 
                 <TextView
@@ -331,7 +327,6 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginTop="8dp"
-                    android:src="@tools:sample/avatars"
                     app:srcCompat="@drawable/fpx_icon" />
 
                 <TextView

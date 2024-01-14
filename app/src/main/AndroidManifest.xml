@@ -12,17 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CodeAndCoffee"
         tools:targetApi="31">
+
         <activity
             android:name=".AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".PickupActivity"
-            android:exported="false" />
-        <activity
             android:name=".TermsAndConditionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ChatWithBotActivity"
             android:exported="false" />
         <activity
             android:name=".HelpCentreActivity"

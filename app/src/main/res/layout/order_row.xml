@@ -21,7 +21,6 @@
             android:layout_height="83dp"
             android:cropToPadding="true"
             android:scaleType="centerCrop"
-            android:src="@tools:sample/avatars"
             app:srcCompat="@drawable/coffee" />
     </androidx.cardview.widget.CardView>
 
