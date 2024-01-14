@@ -16,6 +16,9 @@
             android:name=".AccountActivity"
             android:exported="false" />
         <activity
+            android:name=".PickupActivity"
+            android:exported="false" />
+        <activity
             android:name=".TermsAndConditionActivity"
             android:exported="false" />
         <activity
