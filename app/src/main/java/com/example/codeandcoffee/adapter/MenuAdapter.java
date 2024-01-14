@@ -59,6 +59,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             itemImage = itemView.findViewById(R.id.image_item);
             itemName = itemView.findViewById(R.id.text_name);
             itemPrice = itemView.findViewById(R.id.text_price);
+            itemView.setOnClickListener(this);
         }
         @Override
         public void onClick(View v) {

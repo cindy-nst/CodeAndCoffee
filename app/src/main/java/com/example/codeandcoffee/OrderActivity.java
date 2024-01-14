@@ -26,7 +26,7 @@ public class OrderActivity extends AppCompatActivity {
         name = findViewById(R.id.tv_title);
         description = findViewById(R.id.tv_desc);
         quantity = findViewById(R.id.tv_quantity);
-        total = findViewById(R.id.tv_add);
+        total = findViewById(R.id.tv_total);
         add = findViewById(R.id.tv_add);
         minus = findViewById(R.id.tv_minus);
 
@@ -45,7 +45,6 @@ public class OrderActivity extends AppCompatActivity {
         pic = findViewById(R.id.foodpic);
 
         Intent intent = getIntent();
-
         name.setText(intent.getStringExtra("coffeeName"));
 
     }
