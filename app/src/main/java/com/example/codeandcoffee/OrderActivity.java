@@ -3,21 +3,18 @@ package com.example.codeandcoffee;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-
-import com.google.android.material.appbar.MaterialToolbar;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
 public class OrderActivity extends AppCompatActivity {
 
+    TextView name,description,quantity,total;
+    Button reg,large,normal,half,slight,non;
+    CheckBox whipped,caramel,drizzle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
-
-        MaterialToolbar toolbar = findViewById(R.id.toolbar_order);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Order");
-        }
-
     }
 }
