@@ -39,7 +39,7 @@
         app:srcCompat="@drawable/ic_email_24dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_phone_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/img_btn_call" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_send_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

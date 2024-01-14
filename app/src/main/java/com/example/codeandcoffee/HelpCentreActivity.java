@@ -31,7 +31,7 @@ public class HelpCentreActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Open a new activity (intent) for contacting us
-                Intent intent = new Intent(HelpCentreActivity.this, ContactUs.class);
+                Intent intent = new Intent(HelpCentreActivity.this, ContactUsActivity.class);
                 startActivity(intent);
             }
         });

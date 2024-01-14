@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
-public class ContactUs extends AppCompatActivity implements View.OnClickListener{
+public class ContactUsActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageButton imgBtnCall, imgBtnEmail;
 
@@ -24,7 +24,7 @@ public class ContactUs extends AppCompatActivity implements View.OnClickListener
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
-            getSupportActionBar().setTitle("Settings");
+            getSupportActionBar().setTitle("Contact Us");
             toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
 
             imgBtnCall = findViewById(R.id. img_btn_call);
@@ -41,7 +41,7 @@ public class ContactUs extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.img_btn_call) {
-            Toast.makeText(ContactUs.this, "Call Us", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ContactUsActivity.this, "Call Us", Toast.LENGTH_SHORT).show();
             Intent callIntent = new Intent(Intent.ACTION_DIAL);
             callIntent.setData(Uri.parse("tel: 0127720396"));
 
@@ -50,12 +50,12 @@ public class ContactUs extends AppCompatActivity implements View.OnClickListener
 
             }
             else{
-                Toast.makeText(ContactUs.this, "Sorry no app can handle this action and data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ContactUsActivity.this, "Sorry no app can handle this action and data", Toast.LENGTH_SHORT).show();
             }
 
 
         } else if (id == R.id.img_btn_email) {
-            Toast.makeText(ContactUs.this, "Email Us", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ContactUsActivity.this, "Email Us", Toast.LENGTH_SHORT).show();
             Intent emailIntent = new Intent(Intent.ACTION_SEND);
             emailIntent.setType("text/plain");
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your Order from Code&Coffee");
@@ -65,7 +65,7 @@ public class ContactUs extends AppCompatActivity implements View.OnClickListener
                 startActivity(emailIntent);
             }
             else{
-                Toast.makeText(ContactUs.this, "Sorry no app can handle this action and data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ContactUsActivity.this, "Sorry no app can handle this action and data", Toast.LENGTH_SHORT).show();
             }
         }
     }
