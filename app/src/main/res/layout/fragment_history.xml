@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e7d9d1"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.history.HistoryFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="History Fragment"
-        android:textSize="26dp"
-        android:layout_gravity="center"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_order_history"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#e7d9d1"/>
+
 
 </FrameLayout>

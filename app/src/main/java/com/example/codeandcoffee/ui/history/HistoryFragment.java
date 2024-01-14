@@ -3,12 +3,19 @@ package com.example.codeandcoffee.ui.history;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.codeandcoffee.OrderHistoryItem;
 import com.example.codeandcoffee.R;
+import com.example.codeandcoffee.adapter.HistoryAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +33,8 @@ public class HistoryFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private RecyclerView recyclerView;
+    private HistoryAdapter historyAdapter;
     public HistoryFragment() {
         // Required empty public constructor
     }
@@ -61,6 +70,24 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false);
+        View view = inflater.inflate(R.layout.fragment_history, container, false);
+
+        // Initialize RecyclerView
+        recyclerView = view.findViewById(R.id.recycler_order_history);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        // Initialize HistoryAdapter
+        historyAdapter = new HistoryAdapter(generateOrderHistory());
+        recyclerView.setAdapter(historyAdapter);
+
+        return view;
+    }
+
+    private List<OrderHistoryItem> generateOrderHistory() {
+        List<OrderHistoryItem> orderHistory = new ArrayList<>();
+        orderHistory.add(new OrderHistoryItem("Cappucino","17/12/2023", 3));
+        // Add your order history items here
+        return orderHistory;
     }
 }
