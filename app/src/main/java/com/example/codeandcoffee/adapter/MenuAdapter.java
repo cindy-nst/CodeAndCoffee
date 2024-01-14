@@ -12,7 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.codeandcoffee.R;
-import com.example.codeandcoffee.ui.menu.CoffeeMenuItem;
+import com.example.codeandcoffee.object.CoffeeMenuItem;
+
 
 import java.util.List;
 

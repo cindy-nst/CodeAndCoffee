@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.codeandcoffee.R;
+import com.example.codeandcoffee.object.CoffeeMenuItem;
 
 import java.util.ArrayList;
 import java.util.List;

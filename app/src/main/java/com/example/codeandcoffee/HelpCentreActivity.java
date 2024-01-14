@@ -14,16 +14,16 @@ public class HelpCentreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help_centre);
-        @SuppressLint("WrongViewCast")
-        RelativeLayout chatWithAdminLayout = findViewById(R.id.linearLayoutChatWithAdmin);
-        chatWithAdminLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Open a new activity (intent) for chatting with admin
-                Intent intent = new Intent(HelpCentreActivity.this, ChatWithBotActivity.class);
-                startActivity(intent);
-            }
-        });
+//        @SuppressLint("WrongViewCast")
+//        RelativeLayout chatWithAdminLayout = findViewById(R.id.linearLayoutChatWithAdmin);
+//        chatWithAdminLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Open a new activity (intent) for chatting with admin
+//                Intent intent = new Intent(HelpCentreActivity.this, ChatWithBotActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         @SuppressLint("WrongViewCast")
         RelativeLayout contactUsLayout = findViewById(R.id.linearLayoutContactUs);
