@@ -53,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.et_password);
         etPhoneNumber = findViewById(R.id.et_phone_number);
         etBirthday = findViewById(R.id.et_birthday);
-        btnSignUp = findViewById(R.id.btn_signup);
+        btnSignUp = findViewById(R.id.btn_editprofile);
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("user_details");

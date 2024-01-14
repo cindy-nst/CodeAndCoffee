@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".EditProfileActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_signup"
@@ -17,12 +17,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="150dp"
         android:layout_marginEnd="16dp"
         app:boxCornerRadiusBottomEnd="40dp"
         app:boxCornerRadiusBottomStart="40dp"
@@ -155,15 +157,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="272dp"
         android:backgroundTint="#855748"
-        android:text="Sign Up"
+        android:text="Edit Profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_birthday"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout_birthday" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="128dp"
+        android:layout_height="119dp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_signup"
+        app:srcCompat="@drawable/ic_circle_acc_user" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        app:srcCompat="@drawable/ic_camera_editprofile"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="76dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
