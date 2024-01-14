@@ -1,4 +1,4 @@
-package com.example.codeandcoffee.ui.menu;
+package com.example.codeandcoffee.object;
 import com.example.codeandcoffee.R;
 public class CoffeeMenuItem {
     private String name;
