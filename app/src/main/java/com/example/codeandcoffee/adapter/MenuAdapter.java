@@ -65,6 +65,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), OrderActivity.class);
             intent.putExtra("coffeeName",menuItems.get(getAdapterPosition()).getName());
+            intent.putExtra("coffeeDescription",menuItems.get(getAdapterPosition()).getDescription());
+            //intent.putExtra("coffeePrice", String.format("RM %.2f", menuItems.get(getAdapterPosition()).getPrice()));
+            intent.putExtra("coffeePrice", menuItems.get(getAdapterPosition()).getPrice());
+            intent.putExtra("coffeeImage",menuItems.get(getAdapterPosition()).getImage());
             v.getContext().startActivity(intent);
         }
     }
