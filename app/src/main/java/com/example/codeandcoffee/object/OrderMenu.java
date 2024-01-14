@@ -3,13 +3,9 @@ package com.example.codeandcoffee.object;
 public class OrderMenu extends CoffeeMenuItem{
     private int quantity;
 
-    public OrderMenu(String name, double price, int image, int quantity) {
-        super(name, price, image);
+    public OrderMenu(String name, double price, int image, String description, int quantity) {
+        super(name, price, image, description);
         this.quantity = quantity;
-    }
-
-    public OrderMenu(String name, double price, int image) {
-        super(name, price, image);
     }
 
     public int getQuantity() {

@@ -26,7 +26,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class MenuFragment extends Fragment {
-
+    public List<CoffeeMenuItem> coffeeMenu = new ArrayList<>();
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -78,26 +78,42 @@ public class MenuFragment extends Fragment {
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        List<CoffeeMenuItem> allcoffeeMenu = generateCoffeeMenu();
-        MenuAdapter menuadapter = new MenuAdapter(allcoffeeMenu, getContext());
+        generateCoffeeMenu();
+        MenuAdapter menuadapter = new MenuAdapter(coffeeMenu, getContext());
         recyclerView.setAdapter(menuadapter);
 
         return view;
     }
 
-    private List<CoffeeMenuItem> generateCoffeeMenu() {
+    /*private List<CoffeeMenuItem> generateCoffeeMenu() {
         List<CoffeeMenuItem> coffeeMenu = new ArrayList<>();
 
         // Sample coffee menu items with image resource IDs
-        coffeeMenu.add(new CoffeeMenuItem("Espresso", 2.99, R.drawable.espressocoffee));
-        coffeeMenu.add(new CoffeeMenuItem("Latte", 4.49, R.drawable.lattecoffee));
-        coffeeMenu.add(new CoffeeMenuItem("Cappuccino", 3.99, R.drawable.cappuccinocoffee));
-        coffeeMenu.add(new CoffeeMenuItem("Americano", 3.29, R.drawable.americanocoffee));
+        coffeeMenu.add(new CoffeeMenuItem("Espresso", 2.99, R.drawable.espressocoffee,
+                "Espresso is a concentrated coffee served in small shots, made by forcing hot water through finely-ground coffee beans."));
+        coffeeMenu.add(new CoffeeMenuItem("Latte", 4.49, R.drawable.lattecoffee,
+                "A latte is a coffee beverage consisting of espresso and steamed milk, topped with frothed milk for a creamy texture."));
+        coffeeMenu.add(new CoffeeMenuItem("Cappuccino", 3.99, R.drawable.cappuccinocoffee,
+                "Cappuccino is a balanced blend of espresso, steamed milk, and frothed milk, creating a rich and creamy coffee experience."));
+        coffeeMenu.add(new CoffeeMenuItem("Americano", 3.29, R.drawable.americanocoffee,
+                "An Americano is a diluted espresso, made by adding hot water to a shot of espresso, resulting in a coffee with a strength between espresso and drip coffee."));
 
         // Add more coffee items as needed
 
         return coffeeMenu;
-    }
+    }*/
+    private void generateCoffeeMenu() {
 
+
+        // Sample coffee menu items with image resource IDs
+        coffeeMenu.add(new CoffeeMenuItem("Espresso", 2.99, R.drawable.espressocoffee,
+                "Espresso is a concentrated coffee served in small shots, made by forcing hot water through finely-ground coffee beans."));
+        coffeeMenu.add(new CoffeeMenuItem("Latte", 4.49, R.drawable.lattecoffee,
+                "A latte is a coffee beverage consisting of espresso and steamed milk, topped with frothed milk for a creamy texture."));
+        coffeeMenu.add(new CoffeeMenuItem("Cappuccino", 3.99, R.drawable.cappuccinocoffee,
+                "Cappuccino is a balanced blend of espresso, steamed milk, and frothed milk, creating a rich and creamy coffee experience."));
+        coffeeMenu.add(new CoffeeMenuItem("Americano", 3.29, R.drawable.americanocoffee,
+                "An Americano is a diluted espresso, made by adding hot water to a shot of espresso, resulting in a coffee with a strength between espresso and drip coffee."));
+    }
 
 }

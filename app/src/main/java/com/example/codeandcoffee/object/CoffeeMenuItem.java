@@ -4,11 +4,21 @@ public class CoffeeMenuItem {
     private String name;
     private double price;
     private int image; // Resource ID for the local drawable image
+    private String description;
 
-    public CoffeeMenuItem(String name, double price, int image) {
+    public CoffeeMenuItem(String name, double price, int image, String description) {
         this.name = name;
         this.price = price;
         this.image = image;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {

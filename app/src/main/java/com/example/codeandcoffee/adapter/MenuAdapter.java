@@ -1,6 +1,7 @@
 package com.example.codeandcoffee.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.codeandcoffee.OrderActivity;
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.object.CoffeeMenuItem;
 
@@ -46,7 +48,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         return menuItems.size();
     }
 
-    public static class MenuViewHolder extends RecyclerView.ViewHolder {
+    public class MenuViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
+
         private ImageView itemImage;
         private TextView itemName;
         private TextView itemPrice;
@@ -57,13 +60,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             itemName = itemView.findViewById(R.id.text_name);
             itemPrice = itemView.findViewById(R.id.text_price);
         }
-
-        /*public void bind(MenuItem menuItem) {
-            itemImage.setImageResource(menuItem.getImageResourceId());
-            itemName.setText(menuItem.getName());
-            // Format the price to display with two decimal places
-            itemPrice.setText(String.format("$%.2f", menuItem.getPrice()));
-        }*/
-
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), OrderActivity.class);
+            intent.putExtra("coffeeName",menuItems.get(getAdapterPosition()).getName());
+            v.getContext().startActivity(intent);
+        }
     }
+
 }
