@@ -86,7 +86,7 @@ public class HistoryFragment extends Fragment {
 
     private List<OrderHistoryItem> generateOrderHistory() {
         List<OrderHistoryItem> orderHistory = new ArrayList<>();
-        orderHistory.add(new OrderHistoryItem("Cappucino","17/12/2023", 3));
+        orderHistory.add(new OrderHistoryItem("dfsadff","Cappucino","2","RM 4.oo","17/12/2023", 3, R.drawable.cappuccinocoffee));
         // Add your order history items here
         return orderHistory;
     }
