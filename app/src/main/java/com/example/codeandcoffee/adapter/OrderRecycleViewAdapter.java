@@ -90,6 +90,7 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
                 @Override
                 public void onClick(View v) {
                     quantity++;
+                    PickupActivity.MenuCart.get(getAdapterPosition()).setQuantity(quantity);
                     itemQuantity.setText(String.valueOf(quantity));
                     showprice();
                 }
@@ -99,6 +100,7 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
                 @Override
                 public void onClick(View v) {
                     quantity--;
+                    PickupActivity.MenuCart.get(getAdapterPosition()).setQuantity(quantity);
                     if(quantity<1){
                         // Show an alert message and delete the data in the list
                         showDeleteConfirmationDialog();
@@ -141,6 +143,7 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
                 public void onClick(DialogInterface dialog, int which) {
                     // Restore the quantity to 1 if the user chooses not to delete
                     quantity = 1;
+                    PickupActivity.MenuCart.get(getAdapterPosition()).setQuantity(quantity);
                     itemQuantity.setText(String.valueOf(quantity));
                     showprice();
 
