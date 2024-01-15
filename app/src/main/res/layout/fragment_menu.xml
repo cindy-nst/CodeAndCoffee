@@ -7,15 +7,80 @@
     android:background="#e7d9d1"
     tools:context=".ui.home.HomeFragment">
 
-    <LinearLayout
+    <!-- NestedScrollView for linear_menu -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="84dp"
+        android:layout_height="match_parent">
+
+        <!-- Linear layout for linear_menu -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:orientation="vertical">
+
+            <!-- Hot section -->
+            <TextView
+                android:id="@+id/tv_hot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Hot"
+                android:textSize="38sp"
+                android:textStyle="bold" />
+
+            <!-- Iced section -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:backgroundTint="#FAF8F8"
+                android:clipToPadding="false"
+                android:columnCount="2"
+                android:padding="8dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tv_iced"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="10dp"
+                android:text="Iced"
+                android:textSize="38sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_menuiced"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="2" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Linear layout for linear_cart -->
+    <LinearLayout
+        android:id="@+id/linear_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
         android:orientation="horizontal">
 
+        <!-- Cart details -->
         <LinearLayout
             android:layout_width="277dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -23,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
                 android:text="0 items"
                 android:textColor="#888888"
                 android:textSize="18sp" />
@@ -32,78 +98,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="sans-serif-black"
                 android:text="RM 0.00"
                 android:textColor="@color/black"
                 android:textSize="28sp" />
         </LinearLayout>
 
+        <!-- View Cart button -->
         <Button
             android:id="@+id/btn_cart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="bottom|center"
             android:layout_marginEnd="10dp"
+            android:layout_marginBottom="4dp"
             android:layout_weight="1"
             android:text="View Cart"
             android:textColor="#FFFFFF" />
     </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-    </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tv_hot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:layout_marginStart="10dp"
-            android:text="Hot"
-            android:textSize="38sp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:backgroundTint="#FAF8F8"
-            android:clipToPadding="false"
-            android:columnCount="2"
-            android:padding="8dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/tv_iced"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:layout_marginStart="10dp"
-            android:text="Iced"
-            android:textSize="38sp"
-            android:textStyle="bold" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_menuiced"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="2" />
-
-
-
-    </LinearLayout>
-
 </FrameLayout>
