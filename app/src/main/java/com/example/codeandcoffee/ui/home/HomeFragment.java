@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
 
     private UserDetails loadUserInfo() {
         UserDetails userDetails = new UserDetails();
-        SharedPreferences sharedPreferences = getActivity().getPreferences(MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences("Pref", MODE_PRIVATE);
         String record = sharedPreferences.getString("User", null);
         if (record != null) {
             Gson gson = new Gson();

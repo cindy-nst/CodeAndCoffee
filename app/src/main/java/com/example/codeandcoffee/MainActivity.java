@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     UserDetails userDetails = dataSnapshot.getValue(UserDetails.class);
 
-                    SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences sharedPreferences = getSharedPreferences("Pref", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     Gson gson = new Gson();
                     String str = gson.toJson(userDetails);

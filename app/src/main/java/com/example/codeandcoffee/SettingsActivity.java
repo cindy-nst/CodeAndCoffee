@@ -30,8 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    SwitchMaterial switchPushNotification, switchLocation, switchDarkTheme;
-    TextView tvLanguage, tvPushNotification, tvLocation, tvDarkTheme, tvHelpCenter;
+    SwitchMaterial switchDarkTheme;
+    TextView tvDarkTheme, tvHelpCenter;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferenceEditor;
 
@@ -51,12 +51,8 @@ public class SettingsActivity extends AppCompatActivity {
             toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
         }
 
-        switchPushNotification = findViewById(R.id.switch_push_notification);
-        switchLocation = findViewById(R.id.switch_location);
+
         switchDarkTheme = findViewById(R.id.switch_dark_theme);
-        tvLanguage = findViewById(R.id.tv_language);
-        tvPushNotification = findViewById(R.id.tv_push_notification);
-        tvLocation = findViewById(R.id.tv_location);
         tvDarkTheme = findViewById(R.id.tv_dark_theme);
         tvHelpCenter = findViewById(R.id.tv_help_center);
         btnDeleteAccount = findViewById(R.id.btn_delete_account);
