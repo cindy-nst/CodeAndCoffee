@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.codeandcoffee.model.FeedbackDetail;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,18 +32,15 @@ public class FeedbackActivity extends AppCompatActivity {
     Button btnSubmit;
 
     //a list to store the club and member information from firebase
-    List<FeedbackActivity> feeds;
+    List<FeedbackDetail> feeds;
 
 
     //firebase database reference object
     DatabaseReference databaseFeed;
 
-    public FeedbackActivity(String id, String name) {
-    }
 
 
-    @SuppressLint("MissingInflatedId")
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
@@ -50,7 +48,7 @@ public class FeedbackActivity extends AppCompatActivity {
         etFeed = findViewById(R.id.et_feedback);
 
 
-        btnSubmit = findViewById(R.id.btn_submit);
+        btnSubmit = findViewById(R.id.btn_submit_feed);
 
         databaseFeed = FirebaseDatabase.getInstance().getReference("Feedback");
 
@@ -65,8 +63,8 @@ public class FeedbackActivity extends AppCompatActivity {
 
 
                 for (DataSnapshot clubDataSnapshot : snapshot.getChildren()) {
-                    FeedbackActivity fb = clubDataSnapshot.getValue(FeedbackActivity.class);
-                    feeds.add(fb);
+                    FeedbackDetail newFeed = clubDataSnapshot.getValue(FeedbackDetail.class);
+                    feeds.add(newFeed);
 
                 }
             }
@@ -92,7 +90,7 @@ public class FeedbackActivity extends AppCompatActivity {
 
         if(!TextUtils.isEmpty(name)){
             String id = databaseFeed.push().getKey();
-            FeedbackActivity newStudent = new FeedbackActivity(id, name);
+            FeedbackDetail newStudent = new FeedbackDetail(id);
             databaseFeed.child(id).setValue(newStudent);
 
             etFeed.setText("");
