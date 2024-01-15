@@ -20,7 +20,7 @@ public class ContactUsActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar_HelpCentre);
+        MaterialToolbar toolbar = findViewById(R.id.toolbar_ContactUs);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
