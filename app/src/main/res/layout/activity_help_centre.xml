@@ -42,38 +42,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_help">
 
         <RelativeLayout
-            android:id="@+id/linearLayoutChatWithAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
-
-            <ImageView
-                android:id="@+id/img_chat_with_admin"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-
-                app:srcCompat="@drawable/admin" />
-
-            <TextView
-                android:id="@+id/tv_chat_with_admin"
-                android:layout_width="120dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_toEndOf="@id/img_chat_with_admin"
-                android:text="Chat with Admin" />
-
-            <ImageView
-                android:id="@+id/img_contact_us"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="150dp"
-                android:layout_marginTop="20dp"
-                android:layout_toEndOf="@id/tv_chat_with_admin"
-                app:srcCompat="@drawable/ic_arrow_chat_admin_24dp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
             android:id="@+id/linearLayoutContactUs"
             android:layout_width="match_parent"
             android:layout_height="60dp">

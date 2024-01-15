@@ -129,5 +129,14 @@ public class SettingsActivity extends AppCompatActivity {
                 alert.show();
             }
         });
+
+        tvHelpCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Start the HelpCenterActivity
+                Intent intent = new Intent(SettingsActivity.this, HelpCentreActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
