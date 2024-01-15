@@ -128,13 +128,23 @@ public class MenuFragment extends Fragment {
             });
         }
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_menu);
-        GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(),2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-
         generateCoffeeMenu();
-        MenuAdapter menuadapter = new MenuAdapter(coffeeMenu, getContext());
-        recyclerView.setAdapter(menuadapter);
+
+        RecyclerView hotRecyclerView = view.findViewById(R.id.recycler_menu);
+        GridLayoutManager hotGridLayoutManager = new GridLayoutManager(getContext(), 2);
+        hotRecyclerView.setLayoutManager(hotGridLayoutManager);
+
+        List<CoffeeMenuItem> hotCoffeeMenu = getHotCoffeeMenu();
+        MenuAdapter hotMenuAdapter = new MenuAdapter(hotCoffeeMenu, getContext());
+        hotRecyclerView.setAdapter(hotMenuAdapter);
+
+        RecyclerView icedRecyclerView = view.findViewById(R.id.recycler_menuiced);
+        GridLayoutManager icedGridLayoutManager = new GridLayoutManager(getContext(), 2);
+        icedRecyclerView.setLayoutManager(icedGridLayoutManager);
+
+        List<CoffeeMenuItem> icedCoffeeMenu = getIcedCoffeeMenu();
+        MenuAdapter icedMenuAdapter = new MenuAdapter(icedCoffeeMenu, getContext());
+        icedRecyclerView.setAdapter(icedMenuAdapter);
 
         return view;
     }
@@ -145,13 +155,41 @@ public class MenuFragment extends Fragment {
         coffeeMenu.clear();
         // Sample coffee menu items with image resource IDs
         coffeeMenu.add(new CoffeeMenuItem("Espresso", 2.99, R.drawable.espressocoffee,
-                "Espresso is a concentrated coffee served in small shots, made by forcing hot water through finely-ground coffee beans."));
-        coffeeMenu.add(new CoffeeMenuItem("Latte", 4.49, R.drawable.lattecoffee,
-                "A latte is a coffee beverage consisting of espresso and steamed milk, topped with frothed milk for a creamy texture."));
+                "Espresso is a concentrated coffee served in small shots, made by forcing hot water through finely-ground coffee beans.","Hot"));
+        coffeeMenu.add(new CoffeeMenuItem("Latte", 3.49, R.drawable.lattecoffee,
+                "A latte is a coffee beverage consisting of espresso and steamed milk, topped with frothed milk for a creamy texture.","Hot"));
         coffeeMenu.add(new CoffeeMenuItem("Cappuccino", 3.99, R.drawable.cappuccinocoffee,
-                "Cappuccino is a balanced blend of espresso, steamed milk, and frothed milk, creating a rich and creamy coffee experience."));
+                "Cappuccino is a balanced blend of espresso, steamed milk, and frothed milk, creating a rich and creamy coffee experience.","Hot"));
         coffeeMenu.add(new CoffeeMenuItem("Americano", 3.29, R.drawable.americanocoffee,
-                "An Americano is a diluted espresso, made by adding hot water to a shot of espresso, resulting in a coffee with a strength between espresso and drip coffee."));
+                "An Americano is a diluted espresso, made by adding hot water to a shot of espresso, resulting in a coffee with a strength between espresso and drip coffee.","Hot"));
+
+        coffeeMenu.add(new CoffeeMenuItem("Iced Americano", 4.99, R.drawable.icedamericano,
+                "Pure, strong, and refreshing. Our Iced Americano is a double shot of espresso poured over ice and lightly diluted with cold water.", "Iced"));
+        coffeeMenu.add(new CoffeeMenuItem("Iced Caramel Macchiato", 5.29, R.drawable.icedcaramelmacchiato,
+                "Layers of cold milk, vanilla syrup, and espresso over ice, finished with a drizzle of caramel – a balanced and delightful iced macchiato.", "Iced"));
+        coffeeMenu.add(new CoffeeMenuItem("Hazelnut Haze Iced Latte", 6.29, R.drawable.hazelnuticedlatte,
+                "A delightful iced latte featuring hazelnut flavor, creating a nutty and aromatic coffee experience.", "Iced"));
+        coffeeMenu.add(new CoffeeMenuItem("Espresso Over Ice", 4.49, R.drawable.espressooverice,
+                "A simple yet bold choice – a shot of espresso poured over ice, providing a strong and invigorating iced coffee experience.", "Iced"));
     }
 
+    private List<CoffeeMenuItem> getHotCoffeeMenu() {
+        List<CoffeeMenuItem> hotCoffeeMenu = new ArrayList<>();
+        for (CoffeeMenuItem item : coffeeMenu) {
+            if ("Hot".equals(item.getCategory())) {
+                hotCoffeeMenu.add(item);
+            }
+        }
+        return hotCoffeeMenu;
+    }
+
+    private List<CoffeeMenuItem> getIcedCoffeeMenu() {
+        List<CoffeeMenuItem> icedCoffeeMenu = new ArrayList<>();
+        for (CoffeeMenuItem item : coffeeMenu) {
+            if ("Iced".equals(item.getCategory())) {
+                icedCoffeeMenu.add(item);
+            }
+        }
+        return icedCoffeeMenu;
+    }
 }

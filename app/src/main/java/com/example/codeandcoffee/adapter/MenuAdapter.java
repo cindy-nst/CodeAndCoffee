@@ -3,7 +3,6 @@ package com.example.codeandcoffee.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -38,9 +37,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-        holder.itemName.setText(menuItems.get(position).getName());
-        holder.itemPrice.setText(String.format("RM%.2f",menuItems.get(position).getPrice()));
-        holder.itemImage.setImageResource(menuItems.get(position).getImage());
+        CoffeeMenuItem currentItem = menuItems.get(position);
+
+        holder.itemName.setText(currentItem.getName());
+        holder.itemPrice.setText(String.format("RM%.2f", currentItem.getPrice()));
+        holder.itemImage.setImageResource(currentItem.getImage());
+
+        // Use currentItem.getCategory() to determine the category of the clicked item
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), OrderActivity.class);
+                intent.putExtra("coffeeName", currentItem.getName());
+                intent.putExtra("coffeeDescription", currentItem.getDescription());
+                intent.putExtra("coffeePrice", currentItem.getPrice());
+                intent.putExtra("coffeeImage", currentItem.getImage());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -48,7 +62,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         return menuItems.size();
     }
 
-    public class MenuViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
+    public class MenuViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView itemImage;
         private TextView itemName;
@@ -59,18 +73,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
             itemImage = itemView.findViewById(R.id.image_item);
             itemName = itemView.findViewById(R.id.text_name);
             itemPrice = itemView.findViewById(R.id.text_price);
-            itemView.setOnClickListener(this);
-        }
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(v.getContext(), OrderActivity.class);
-            intent.putExtra("coffeeName",menuItems.get(getAdapterPosition()).getName());
-            intent.putExtra("coffeeDescription",menuItems.get(getAdapterPosition()).getDescription());
-            //intent.putExtra("coffeePrice", String.format("RM %.2f", menuItems.get(getAdapterPosition()).getPrice()));
-            intent.putExtra("coffeePrice", menuItems.get(getAdapterPosition()).getPrice());
-            intent.putExtra("coffeeImage",menuItems.get(getAdapterPosition()).getImage());
-            v.getContext().startActivity(intent);
         }
     }
-
 }

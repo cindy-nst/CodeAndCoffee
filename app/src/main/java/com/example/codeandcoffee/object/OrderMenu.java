@@ -13,8 +13,8 @@ public class OrderMenu extends CoffeeMenuItem{
     private Boolean CaramelDrizzled;
     private Boolean ChocolateDrizzled;
 
-    public OrderMenu(String name, double price, int image, String description, int quantity, String orderDetail, Boolean whippedCreame, Boolean caramelDrizzled, Boolean chocolateDrizzled) {
-        super(name, price, image, description);
+    public OrderMenu(String name, double price, int image, String description, String category, int quantity, String orderDetail, Boolean whippedCreame, Boolean caramelDrizzled, Boolean chocolateDrizzled) {
+        super(name, price, image, description,category);
         this.quantity = quantity;
         this.orderDetail = orderDetail;
         this.whippedCreame = whippedCreame;
