@@ -39,6 +39,7 @@ public class OrderActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Order");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
             toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
         }
 
