@@ -1,7 +1,10 @@
 package com.example.codeandcoffee.ui.menu;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.codeandcoffee.OrderActivity;
+import com.example.codeandcoffee.PickupActivity;
 import com.example.codeandcoffee.adapter.MenuAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +13,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.object.CoffeeMenuItem;
+import com.example.codeandcoffee.object.OrderMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +38,13 @@ public class MenuFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    public List<OrderMenu> menuList = new ArrayList<>();
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Button buttonCart;
 
     public MenuFragment() {
         // Required empty public constructor
@@ -58,6 +68,7 @@ public class MenuFragment extends Fragment {
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +84,16 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
+
+        buttonCart = view.findViewById(R.id.btn_cart);
+        buttonCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), PickupActivity.class);
+                //intent.putParcelableArrayListExtra("orderMenuList", new ArrayList<>(menuList));
+                v.getContext().startActivity(intent);
+            }
+        });
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_menu);
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(),2);
@@ -104,7 +125,8 @@ public class MenuFragment extends Fragment {
     }*/
     private void generateCoffeeMenu() {
 
-
+        // Clear the menuList
+        coffeeMenu.clear();
         // Sample coffee menu items with image resource IDs
         coffeeMenu.add(new CoffeeMenuItem("Espresso", 2.99, R.drawable.espressocoffee,
                 "Espresso is a concentrated coffee served in small shots, made by forcing hot water through finely-ground coffee beans."));

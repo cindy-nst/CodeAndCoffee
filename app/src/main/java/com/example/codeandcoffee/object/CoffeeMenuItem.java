@@ -13,6 +13,10 @@ public class CoffeeMenuItem {
         this.description = description;
     }
 
+    public CoffeeMenuItem() {
+
+    }
+
     public String getDescription() {
         return description;
     }

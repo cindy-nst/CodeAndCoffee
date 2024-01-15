@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.example.codeandcoffee.databinding.ActivityMainBinding;
 import com.example.codeandcoffee.model.UserDetails;
+import com.example.codeandcoffee.object.OrderMenu;
 import com.example.codeandcoffee.ui.account.AccountFragment;
 import com.example.codeandcoffee.ui.history.HistoryFragment;
 import com.example.codeandcoffee.ui.home.HomeFragment;
@@ -31,8 +32,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
 
+public class MainActivity extends AppCompatActivity {
+    public static final String ACTION_SHOW_MENU_FRAGMENT = "show_menu_fragment";
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private DatabaseReference databaseReference;
@@ -45,10 +48,19 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         goToFragment(new HomeFragment());
+
+        // Handle the intent action
+        handleIntentAction(getIntent());
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar_homepage);
         setSupportActionBar(toolbar);
+
+
+
+
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_home) {
@@ -66,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
+    }
+
+    private void handleIntentAction(Intent intent) {
+        if (intent != null && intent.getAction() != null) {
+            if (intent.getAction().equals(MainActivity.ACTION_SHOW_MENU_FRAGMENT)) {
+                binding.bottomNavigationView.setSelectedItemId(R.id.nav_menu);
+                goToFragment(new MenuFragment());
+            }
+        }
     }
 
     @Override

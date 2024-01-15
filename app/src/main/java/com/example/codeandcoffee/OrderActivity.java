@@ -13,16 +13,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.codeandcoffee.object.OrderMenu;
 import com.google.android.material.appbar.MaterialToolbar;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderActivity extends AppCompatActivity {
     int jumlah = 1;
     double coffeePrice;
-    boolean whipCreme = false, caramel=false, choco=false;
+    Boolean whipCreme = false, caramel=false, choco=false;
     TextView name,description,quantity,total,add,minus;
     Button reg,large,normal,half,slight,non,addtocart;
     CheckBox whipped,cardriz,chocodriz;
     ImageView pic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,6 +147,31 @@ public class OrderActivity extends AppCompatActivity {
                 // Handle the CheckBox state change
                 choco = isChecked;
                 showprice();
+            }
+        });
+
+        addtocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double temp = getIntent().getDoubleExtra("coffeePrice", 0.0);
+                String odrDetail;
+
+                //get order detail
+                if(coffeePrice>temp)
+                    odrDetail = "Large";
+                else
+                    odrDetail = "Regular";
+                if(whipCreme)
+                    odrDetail += ", Whipped Creme";
+                if(caramel)
+                    odrDetail += ", Caramel Drizzle";
+                if(choco)
+                    odrDetail += ", Chocolate Drizzle";
+
+                PickupActivity.MenuCart.add(new OrderMenu(intent.getStringExtra("coffeeName"), coffeePrice, intent.getIntExtra("coffeeImage",0), intent.getStringExtra("coffeeDescription"),jumlah,odrDetail, whipCreme,caramel,choco));
+                Intent intent = new Intent(OrderActivity.this, MainActivity.class);
+                intent.setAction(MainActivity.ACTION_SHOW_MENU_FRAGMENT);
+                startActivity(intent);
             }
         });
 

@@ -7,7 +7,7 @@
     android:background="#e7d9d1"
     tools:context=".PickupActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_pickup"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
@@ -38,6 +38,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
+                app:cardBackgroundColor="#FFFFFF"
                 app:cardCornerRadius="16dp">
 
                 <LinearLayout
@@ -58,6 +59,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="16dp"
                             android:text="Pickup Details"
+                            android:textColor="#000000"
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
@@ -95,6 +97,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="16dp"
                             android:text="Code And Coffe, Kolej Pendeta Zaa'ba\nUKM Bangi, 43600 Selangor"
+                            android:textColor="#000000"
                             android:textSize="18dp"
                             tools:layout_marginBottom="8dp" />
 
@@ -113,6 +116,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginBottom="8dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -132,6 +136,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="8dp"
                             android:text="ASAP"
+                            android:textColor="#070707"
                             android:textSize="18dp"
                             tools:layout_marginBottom="8dp" />
 
@@ -169,23 +174,25 @@
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:text="Order Summary"
+                    android:textColor="#000000"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     tools:layout_marginBottom="8dp" />
 
                 <TextView
-                    android:id="@+id/tv_add_items"
+                    android:id="@+id/tv_ad_items"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:layout_marginRight="8dp"
-                    android:text="Add Items"
-                    android:textAlignment="textEnd"
-                    android:textSize="18dp"
-                    tools:layout_marginBottom="8dp" />
+                    android:layout_marginBottom="8dp"
+                    android:text="Add Item"
+                    android:textColor="#3F51B5"
+                    android:textSize="16dp" />
+
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="16dp"
@@ -212,6 +219,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:text="Payment Summary"
+                android:textColor="#000000"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 tools:layout_marginBottom="8dp" />
@@ -231,6 +239,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:text="Subtotal"
+                    android:textColor="#000000"
                     android:textSize="16dp"
                     tools:layout_marginBottom="8dp" />
 
@@ -242,6 +251,7 @@
                     android:layout_marginRight="8dp"
                     android:text="RM 0.00"
                     android:textAlignment="textEnd"
+                    android:textColor="#040404"
                     android:textSize="16dp"
                     tools:layout_marginBottom="8dp" />
             </LinearLayout>
@@ -260,6 +270,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
                     android:text="Tax (6%)"
+                    android:textColor="#000000"
                     android:textSize="16dp"
                     tools:layout_marginBottom="8dp" />
 
@@ -270,6 +281,7 @@
                     android:layout_marginRight="8dp"
                     android:text="RM 0.00"
                     android:textAlignment="textEnd"
+                    android:textColor="#000000"
                     android:textSize="16dp"
                     tools:layout_marginBottom="8dp" />
 
@@ -283,6 +295,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:text="Payment Method"
+                android:textColor="#000000"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 tools:layout_marginBottom="8dp" />
@@ -307,7 +320,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="Credit / Debit Card" />
+                    android:text="Credit / Debit Card"
+                    android:textColor="#000000" />
 
                 <RadioButton
                     android:id="@+id/radbtn_credit"
@@ -335,7 +349,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:text="Online Banking" />
+                    android:text="Online Banking"
+                    android:textColor="#000000" />
 
                 <RadioButton
                     android:id="@+id/radbtn_fpx"
@@ -395,6 +410,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="#855748"
             android:text="Order Now"
             android:textColor="@color/white" />
