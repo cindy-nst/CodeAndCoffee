@@ -1,8 +1,11 @@
 package com.example.codeandcoffee.adapter;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +15,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.codeandcoffee.MainActivity;
+import com.example.codeandcoffee.OrderActivity;
+import com.example.codeandcoffee.PickupActivity;
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.object.CoffeeMenuItem;
 import com.example.codeandcoffee.object.OrderMenu;
@@ -122,6 +128,12 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
                         dialog.dismiss();
 
                     }
+                    if (PickupActivity.MenuCart.isEmpty()) {
+                        Intent intent = new Intent(context, MainActivity.class);
+                        intent.setAction(MainActivity.ACTION_SHOW_MENU_FRAGMENT);
+                        context.startActivity(intent);
+                    }
+
                 }
             });
             builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

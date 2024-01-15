@@ -9,7 +9,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar_pickup"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#855748"
         android:minHeight="?attr/actionBarSize"
@@ -96,7 +96,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginRight="16dp"
-                            android:text="Code And Coffe, Kolej Pendeta Zaa'ba\nUKM Bangi, 43600 Selangor"
+                            android:text="Code And Coffee, Kolej Pendeta Zaa'ba\nUKM Bangi, 43600 Selangor"
                             android:textColor="#000000"
                             android:textSize="18dp"
                             tools:layout_marginBottom="8dp" />

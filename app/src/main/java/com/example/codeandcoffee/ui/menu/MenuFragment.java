@@ -51,7 +51,13 @@ public class MenuFragment extends Fragment {
     public void updateItemCount() {
         if (tvCount != null) {
             tvCount.setText(String.valueOf(PickupActivity.MenuCart.size()) + " items");
+            double i = 0;
+            for (OrderMenu e : PickupActivity.MenuCart) {
+                i+= (e.getPrice()*e.getQuantity());
+            }
+            tvTotal.setText(String.format("RM %.2f",i));
         }
+
     }
     public MenuFragment() {
         // Required empty public constructor
@@ -99,15 +105,21 @@ public class MenuFragment extends Fragment {
         tvTotal = view.findViewById(R.id.cart_price);
         updateItemCount();
 
-        buttonCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), PickupActivity.class);
-                //intent.putParcelableArrayListExtra("orderMenuList", new ArrayList<>(menuList));
-                v.getContext().startActivity(intent);
+        if(PickupActivity.MenuCart.isEmpty()){
+            buttonCart.setBackgroundTintList(getResources().getColorStateList(R.color.diselect));
+        }
+        else {
+            buttonCart.setBackgroundTintList(getResources().getColorStateList(R.color.select));
+            buttonCart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), PickupActivity.class);
+                    //intent.putParcelableArrayListExtra("orderMenuList", new ArrayList<>(menuList));
+                    v.getContext().startActivity(intent);
 
-            }
-        });
+                }
+            });
+        }
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_menu);
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(),2);
