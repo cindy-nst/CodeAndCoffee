@@ -31,8 +31,12 @@ import java.util.List;
 public class PickupActivity extends AppCompatActivity {
 
     public static List<OrderMenu> MenuCart = new ArrayList<>();
-    private TextView addItem, Subtotal, Tax, total;
-    double sub=0, tax=0;
+    private TextView addItem;
+    private static TextView Subtotal;
+    private static TextView Tax;
+    private static TextView total;
+    static double sub;
+    static double tax;
 
     public static final String ASAP_PREFERENCE_KEY = "asap_preference";
 
@@ -82,15 +86,8 @@ public class PickupActivity extends AppCompatActivity {
         Tax = findViewById(R.id.tv_tax);
         total = findViewById(R.id.tv_total);
 
-        for (OrderMenu e : PickupActivity.MenuCart) {
-            sub+= (e.getPrice()*e.getQuantity());
-        }
+        update();
 
-        tax = 0.06 * sub;
-
-        Subtotal.setText(String.format("RM %.2f",sub));
-        Tax.setText(String.format("RM %.2f",tax));
-        total.setText(String.format("RM %.2f",sub + tax));
         radFPX = findViewById(R.id.radbtn_fpx);
         radCredit = findViewById(R.id.radbtn_credit);
 
@@ -186,5 +183,17 @@ public class PickupActivity extends AppCompatActivity {
             String selectedTime = String.format("%02d:%02d", hour, minute);
             tvTimeOrder.setText(selectedTime);
         }
+    }
+    public static void update(){
+        sub=0;
+        for (OrderMenu e : PickupActivity.MenuCart) {
+            sub+= (e.getPrice()*e.getQuantity());
+        }
+
+        tax = 0.06 * sub;
+
+        Subtotal.setText(String.format("RM %.2f",sub));
+        Tax.setText(String.format("RM %.2f",tax));
+        total.setText(String.format("RM %.2f",sub + tax));
     }
 }

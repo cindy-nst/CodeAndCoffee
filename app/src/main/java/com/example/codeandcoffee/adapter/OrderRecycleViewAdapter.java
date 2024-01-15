@@ -93,6 +93,7 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
                     PickupActivity.MenuCart.get(getAdapterPosition()).setQuantity(quantity);
                     itemQuantity.setText(String.valueOf(quantity));
                     showprice();
+                    PickupActivity.update();
                 }
             });
 
@@ -107,6 +108,7 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
                     }
                     itemQuantity.setText(String.valueOf(quantity));
                     showprice();
+                    PickupActivity.update();
                 }
             });
         }
