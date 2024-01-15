@@ -3,6 +3,7 @@ package com.example.codeandcoffee;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -19,5 +20,8 @@ public class TermsAndConditionActivity extends AppCompatActivity {
             getSupportActionBar().setTitle("Terms And Condition");
             toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
         }
+        TextView textViewTerms = findViewById(R.id.textViewTerms);
+        textViewTerms.setText(getString(R.string.terms_and_conditions));
+
     }
 }
