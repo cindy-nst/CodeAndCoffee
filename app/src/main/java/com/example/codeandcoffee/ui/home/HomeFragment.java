@@ -3,6 +3,7 @@ package com.example.codeandcoffee.ui.home;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -12,10 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.example.codeandcoffee.MainActivity;
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.model.UserDetails;
 import com.google.gson.Gson;
@@ -35,6 +38,8 @@ public class HomeFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private UserDetails userDetails;
 
+    private Button buttonorder;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -48,6 +53,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,6 +75,17 @@ public class HomeFragment extends Fragment {
         for (int resId : sliderImages) {
             addImageToViewFlipper(resId);
         }
+
+        buttonorder = view.findViewById(R.id.btn_delivery);
+        buttonorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Navigate to the MenuFragment when the button is clicked
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.setAction(MainActivity.ACTION_SHOW_MENU_FRAGMENT);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
