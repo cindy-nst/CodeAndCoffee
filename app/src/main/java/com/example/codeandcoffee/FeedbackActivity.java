@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.codeandcoffee.model.FeedbackDetail;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +45,14 @@ public class FeedbackActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+
+        MaterialToolbar toolbar = findViewById(R.id.toolbar_feedback);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
+            getSupportActionBar().setTitle("Feedback");
+            toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
+        }
 
         etFeed = findViewById(R.id.et_feedback);
 

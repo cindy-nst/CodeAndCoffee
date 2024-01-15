@@ -40,6 +40,7 @@ public class OrderActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.toolbar_order);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
             getSupportActionBar().setTitle("Order");
             toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
         }

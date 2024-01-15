@@ -22,6 +22,7 @@ public class HelpCentreActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
             getSupportActionBar().setTitle("Help Center");
+            toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
         }
 
         @SuppressLint("WrongViewCast")

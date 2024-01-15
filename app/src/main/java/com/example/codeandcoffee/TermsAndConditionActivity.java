@@ -17,6 +17,7 @@ public class TermsAndConditionActivity extends AppCompatActivity {
         MaterialToolbar toolbar = findViewById(R.id.toolbar_termsAndCondition);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
             getSupportActionBar().setTitle("Terms And Condition");
             toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
         }
