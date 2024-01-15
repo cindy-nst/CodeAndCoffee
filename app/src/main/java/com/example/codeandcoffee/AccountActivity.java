@@ -1,6 +1,7 @@
 package com.example.codeandcoffee;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 public class AccountActivity extends AppCompatActivity {
 
@@ -21,6 +23,16 @@ public class AccountActivity extends AppCompatActivity {
         TextView settingTextView = findViewById(R.id.tv_setting);
         TextView feedbackTextView = findViewById(R.id.tv_feedback);
         TextView termsTextView = findViewById(R.id.tv_termsandcond);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Settings", MODE_PRIVATE);
+        Boolean state = sharedPreferences.getBoolean("State", false);
+
+        if (state) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
 
         imgUserEdit = findViewById(R.id.img_user_edit);
 

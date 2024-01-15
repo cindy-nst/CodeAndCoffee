@@ -70,9 +70,9 @@ public class SettingsActivity extends AppCompatActivity {
         switchDarkTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                sharedPreferenceEditor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
                 if (isChecked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                    sharedPreferenceEditor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
                     sharedPreferenceEditor.putBoolean("State", true);
                     sharedPreferenceEditor.apply();
                 } else {
