@@ -1,81 +1,56 @@
 package com.example.codeandcoffee;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-import com.google.android.material.appbar.MaterialToolbar;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.fragment_account);
 
-        MaterialToolbar toolbar = findViewById(R.id.toolbar_account);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
-            getSupportActionBar().setTitle("Account");
-        }
+        TextView orderTextView = findViewById(R.id.tv_acc_order);
+        TextView settingTextView = findViewById(R.id.tv_acc_set);
+        TextView feedbackTextView = findViewById(R.id.tv_acc_feed);
+        TextView termsTextView = findViewById(R.id.tv_acc_term);
 
-        RelativeLayout llOrder = findViewById(R.id.ll_order);
-        RelativeLayout llSetting = findViewById(R.id.ll_setting);
-        RelativeLayout llFeedback = findViewById(R.id.ll_feedback);
-        RelativeLayout llTermsAndCond = findViewById(R.id.ll_termsandcond);
-        ImageButton imgUserEdit = findViewById(R.id.img_user_edit);
 
-        llOrder.setOnClickListener(new View.OnClickListener() {
+        orderTextView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Start the OrderActivity
+            public void onClick(View view) {
                 Intent intent = new Intent(AccountActivity.this, OrderActivity.class);
                 startActivity(intent);
             }
         });
 
-        llSetting.setOnClickListener(new View.OnClickListener() {
+        settingTextView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Start the SettingActivity
+            public void onClick(View view) {
                 Intent intent = new Intent(AccountActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
         });
 
-        llFeedback.setOnClickListener(new View.OnClickListener() {
+        feedbackTextView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Start the FeedbackActivity
+            public void onClick(View view) {
                 Intent intent = new Intent(AccountActivity.this, FeedbackActivity.class);
                 startActivity(intent);
             }
         });
 
-        llTermsAndCond.setOnClickListener(new View.OnClickListener() {
+        termsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // Start the TermsAndConditionsActivity
+            public void onClick(View view) {
                 Intent intent = new Intent(AccountActivity.this, TermsAndConditionActivity.class);
                 startActivity(intent);
             }
         });
-
-        imgUserEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the EditUserActivity (replace with your actual activity)
-                Intent intent = new Intent(AccountActivity.this, EditProfileActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 }
