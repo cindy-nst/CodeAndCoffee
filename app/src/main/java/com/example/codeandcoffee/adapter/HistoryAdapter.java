@@ -34,7 +34,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         OrderHistoryItem historyItem = orderHistoryList.get(position);
         holder.itemName.setText(historyItem.getItemName());
         holder.orderDate.setText(historyItem.getOrderDate());
-        holder.ratingBar.setRating(historyItem.getRating());
+        holder.itemPrice.setText(historyItem.getPrice());
+        holder.itemQty.setText(String.valueOf(historyItem.getQuantity()));
+        holder.itemDesc.setText(historyItem.getOrderDetail());
         // Set the image here if you have an image property in OrderHistoryItem
     }
 
@@ -47,13 +49,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
         private TextView itemName;
         private TextView orderDate;
+        private TextView itemPrice;
+        private TextView itemQty;
+        private TextView itemDesc;
+
         private RatingBar ratingBar;
 
         public HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
             itemName = itemView.findViewById(R.id.text_name);
             orderDate = itemView.findViewById(R.id.text_order_date);
-            ratingBar = itemView.findViewById(R.id.rating_bar);
+            itemPrice = itemView.findViewById(R.id.tv_historyprice);
+            itemQty = itemView.findViewById(R.id.tv_historyqty);
+            itemDesc = itemView.findViewById(R.id.tv_historydesc);
         }
     }
 }

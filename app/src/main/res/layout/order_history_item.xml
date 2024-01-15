@@ -5,122 +5,99 @@
     android:layout_height="match_parent"
     android:textAlignment="gravity">
 
-    <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-3dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#855748"
-                android:text="All"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                app:iconGravity="textStart" />
-
-            <Button
-                android:id="@+id/btn_30days"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#855748"
-                android:text="Past 30days"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/btn_month"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:backgroundTint="#855748"
-                android:text="Past a month"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/btn_year"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                android:backgroundTint="#855748"
-                android:text="Past a year"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp" />
-        </LinearLayout>
-    </HorizontalScrollView>
-
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:background="@drawable/border_background"
         android:orientation="horizontal"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+        tools:layout_editor_absoluteY="108dp">
 
 
-        <ImageView
-            android:id="@+id/image_item"
-            android:layout_width="129dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="top"
-            android:scaleType="centerCrop"
-            android:src="@drawable/cappuccinocoffee"
-            app:srcCompat="@drawable/espressocoffee" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="108dp"
+            android:layout_height="95dp"
+            app:cardCornerRadius="10dp">
+
+            <ImageView
+                android:id="@+id/image_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cappuccinocoffee"
+                app:srcCompat="@drawable/espressocoffee" />
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="278dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="6dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
 
-            <TextView
-                android:id="@+id/text_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Item Name"
-                android:textColor="#000000"
-                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item Name"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_historyprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="RM 0.00"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/text_order_date"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_historydesc"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Order Date"
+                android:layout_marginTop="4dp"
+                android:text="Description"
                 android:textColor="#858585"
                 android:textSize="14sp" />
 
-            <RatingBar
-                android:id="@+id/rating_bar"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:max="5"
-                android:numStars="5"
-                android:progressTint="#855748"
-                android:rating="0.0" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_order_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Order Date"
+                    android:textColor="#858585"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_historyqty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="x0"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

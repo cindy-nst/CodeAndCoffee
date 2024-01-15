@@ -4,7 +4,7 @@
     tools:ignore="MissingDefaultResource">
     <solid android:color="#ffffff" /> <!-- Set the background color of the layout -->
     <stroke
-        android:width="2dp"
+        android:width="1dp"
         android:color="#000000" /> <!-- Set the width and color of the border -->
     <corners android:radius="8dp" /> <!-- Set the corner radius if you want rounded corners -->
 </shape>
