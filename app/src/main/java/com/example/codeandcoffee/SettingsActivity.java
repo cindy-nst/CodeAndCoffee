@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationChannel;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
     TextView tvLanguage, tvPushNotification, tvLocation, tvDarkTheme, tvHelpCenter;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor sharedPreferenceEditor;
+
     Button btnDeleteAccount;
 
     @Override
@@ -112,7 +116,7 @@ public class SettingsActivity extends AppCompatActivity {
                                             Log.e("Delete Account", "Error deleting account", e);
                                         }
                                     });
-                        }else{
+                        } else {
                             Toast.makeText(getApplicationContext(), "Something is wrong, error deleting account", Toast.LENGTH_SHORT).show();
                             Log.e("Delete Account", "User not found");
                         }
