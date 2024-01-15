@@ -1,4 +1,4 @@
-package com.example.codeandcoffee;
+package com.example.codeandcoffee.object;
 
 public class OrderHistoryItem {
     private String itemName;

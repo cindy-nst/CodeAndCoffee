@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.codeandcoffee.OrderHistoryItem;
+import com.example.codeandcoffee.object.OrderHistoryItem;
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.adapter.HistoryAdapter;
 
