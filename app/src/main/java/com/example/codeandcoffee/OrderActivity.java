@@ -176,12 +176,15 @@ public class OrderActivity extends AppCompatActivity {
                     odrDetail += ", Slight";
                 if(nonsugar)
                     odrDetail += ", Non";
-                if(whipCreme)
+                if(whipCreme) {
                     odrDetail += ", Whipped Creme";
-                if(caramel)
+                }
+                if(caramel) {
                     odrDetail += ", Caramel Drizzle";
-                if(choco)
+                }
+                if(choco) {
                     odrDetail += ", Chocolate Drizzle";
+                }
 
                 // Check if the item already exists in the cart
                 boolean itemExists = false;
@@ -196,7 +199,7 @@ public class OrderActivity extends AppCompatActivity {
 
                 // If the item doesn't exist, add it to the cart
                 if (!itemExists) {
-                    PickupActivity.MenuCart.add(new OrderMenu(intent.getStringExtra("coffeeName"), coffeePrice, intent.getIntExtra("coffeeImage", 0), intent.getStringExtra("coffeeDescription"), jumlah, odrDetail, whipCreme, caramel, choco));
+                    PickupActivity.MenuCart.add(new OrderMenu(intent.getStringExtra("coffeeName"), coffeePrice, intent.getIntExtra("coffeeImage", 0), intent.getStringExtra("coffeeDescription"), jumlah, odrDetail, whipCreme.booleanValue(), caramel.booleanValue(), choco.booleanValue()));
                 }
 
                 Intent intent = new Intent(OrderActivity.this, MainActivity.class);

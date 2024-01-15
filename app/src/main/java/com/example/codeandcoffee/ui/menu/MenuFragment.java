@@ -53,7 +53,14 @@ public class MenuFragment extends Fragment {
             tvCount.setText(String.valueOf(PickupActivity.MenuCart.size()) + " items");
             double i = 0;
             for (OrderMenu e : PickupActivity.MenuCart) {
-                i+= (e.getPrice()*e.getQuantity());
+                double price = e.getPrice();
+                if(e.getWhippedCreame())
+                    price+=1.20;
+                if(e.getCaramelDrizzled())
+                    price+=1;
+                if(e.getChocolateDrizzled())
+                    price+=1;
+                i+= (price*e.getQuantity());
             }
             tvTotal.setText(String.format("RM %.2f",i));
         }

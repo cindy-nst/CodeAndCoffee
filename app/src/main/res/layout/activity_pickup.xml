@@ -437,13 +437,12 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_addtocard"
+            android:id="@+id/btn_ordernow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="#855748"
             android:text="Order Now"
             android:textColor="@color/white" />
 

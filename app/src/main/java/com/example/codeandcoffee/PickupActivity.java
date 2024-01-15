@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class PickupActivity extends AppCompatActivity {
     private static TextView Subtotal;
     private static TextView Tax;
     private static TextView total;
+    private Button ordernow;
     static double sub;
     static double tax;
 
@@ -85,6 +87,7 @@ public class PickupActivity extends AppCompatActivity {
         Subtotal = findViewById(R.id.tv_subtotal);
         Tax = findViewById(R.id.tv_tax);
         total = findViewById(R.id.tv_total);
+        ordernow = findViewById(R.id.btn_ordernow);
 
         update();
 
@@ -96,6 +99,7 @@ public class PickupActivity extends AppCompatActivity {
         radFPX = findViewById(R.id.radbtn_fpx);
         radCredit = findViewById(R.id.radbtn_credit);
 
+        ordernow.setBackgroundTintList(getResources().getColorStateList(R.color.diselect));
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -103,18 +107,28 @@ public class PickupActivity extends AppCompatActivity {
                 RadioButton radioButton = findViewById(checkedId);
 
                 if (radioButton != null) {
+
                     // Check which radio button was selected
                     if (radioButton == radFPX) {
                         // Handle radFPX selection
                         //radFPX.setChecked(true);
                        //radCredit.setChecked(false);
-                        Toast.makeText(PickupActivity.this, "FPX selected", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(PickupActivity.this, "FPX selected", Toast.LENGTH_SHORT).show();
                     } else if (radioButton == radCredit) {
                         //radFPX.setChecked(false);
                         //radCredit.setChecked(true);
                         // Handle radCredit selection
-                        Toast.makeText(PickupActivity.this, "Credit selected", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(PickupActivity.this, "Credit selected", Toast.LENGTH_SHORT).show();
                     }
+
+                    ordernow.setBackgroundTintList(getResources().getColorStateList(R.color.select));
+                    ordernow.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(PickupActivity.this, PaymentActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         });
@@ -128,6 +142,8 @@ public class PickupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
@@ -187,7 +203,14 @@ public class PickupActivity extends AppCompatActivity {
     public static void update(){
         sub=0;
         for (OrderMenu e : PickupActivity.MenuCart) {
-            sub+= (e.getPrice()*e.getQuantity());
+            double price = e.getPrice();
+            if(e.getWhippedCreame())
+                price+=1.20;
+            if(e.getCaramelDrizzled())
+                price+=1;
+            if(e.getChocolateDrizzled())
+                price+=1;
+            sub+= (price*e.getQuantity());
         }
 
         tax = 0.06 * sub;
