@@ -36,7 +36,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         holder.itemName.setText(historyItem.getItemName());
         holder.orderDate.setText(historyItem.getOrderDate());
         holder.itemPrice.setText(historyItem.getPrice());
-        holder.itemQty.setText(String.valueOf(historyItem.getQuantity()));
+        holder.itemQty.setText("x"+String.valueOf(historyItem.getQuantity()));
         holder.itemDesc.setText(historyItem.getOrderDetail());
         holder.imageView.setImageResource(historyItem.getImageCoffee());
         // Set the image here if you have an image property in OrderHistoryItem
