@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.codeandcoffee.PaymentActivity;
 import com.example.codeandcoffee.object.OrderHistoryItem;
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.adapter.HistoryAdapter;
@@ -78,16 +79,18 @@ public class HistoryFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         // Initialize HistoryAdapter
-        historyAdapter = new HistoryAdapter(generateOrderHistory());
+        historyAdapter = new HistoryAdapter(PaymentActivity.orderHistoryItems);
         recyclerView.setAdapter(historyAdapter);
+
+
 
         return view;
     }
 
-    private List<OrderHistoryItem> generateOrderHistory() {
+    /*private List<OrderHistoryItem> generateOrderHistory() {
         List<OrderHistoryItem> orderHistory = new ArrayList<>();
-        orderHistory.add(new OrderHistoryItem("dfsadff","Cappucino","2","RM 4.oo","17/12/2023", 3, R.drawable.cappuccinocoffee));
+        orderHistory.add(new OrderHistoryItem("dfsadff","Cappucino",3,"RM 4.oo","17/12/2023", 3, R.drawable.cappuccinocoffee, "normal,regular"));
         // Add your order history items here
         return orderHistory;
-    }
+    }*/
 }

@@ -2,21 +2,26 @@ package com.example.codeandcoffee.object;
 
 public class OrderHistoryItem {
     String id;
+    String gmail;
     private String itemName;
-    private String quantity;
+    private int quantity;
     private String price;
     private String orderDate;
-    private float rating;
     private int imageCoffee;
+    private String orderDetail;
 
-    public OrderHistoryItem(String id, String itemName, String quantity, String price, String orderDate, float rating, int imageCoffee) {
+    public OrderHistoryItem() {
+    }
+
+    public OrderHistoryItem(String id, String gmail, String itemName, int quantity, String price, String orderDate, int imageCoffee, String orderDetail) {
         this.id = id;
+        this.gmail = gmail;
         this.itemName = itemName;
         this.quantity = quantity;
         this.price = price;
         this.orderDate = orderDate;
-        this.rating = rating;
         this.imageCoffee = imageCoffee;
+        this.orderDetail = orderDetail;
     }
 
     public String getId() {
@@ -27,6 +32,14 @@ public class OrderHistoryItem {
         this.id = id;
     }
 
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
+    }
+
     public String getItemName() {
         return itemName;
     }
@@ -35,11 +48,11 @@ public class OrderHistoryItem {
         this.itemName = itemName;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -59,14 +72,6 @@ public class OrderHistoryItem {
         this.orderDate = orderDate;
     }
 
-    public float getRating() {
-        return rating;
-    }
-
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
-
     public int getImageCoffee() {
         return imageCoffee;
     }
@@ -74,5 +79,12 @@ public class OrderHistoryItem {
     public void setImageCoffee(int imageCoffee) {
         this.imageCoffee = imageCoffee;
     }
-}
 
+    public String getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(String orderDetail) {
+        this.orderDetail = orderDetail;
+    }
+}

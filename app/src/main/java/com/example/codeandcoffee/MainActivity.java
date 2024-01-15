@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.example.codeandcoffee.databinding.ActivityMainBinding;
 import com.example.codeandcoffee.model.UserDetails;
+import com.example.codeandcoffee.object.OrderHistoryItem;
 import com.example.codeandcoffee.object.OrderMenu;
 import com.example.codeandcoffee.ui.account.AccountFragment;
 import com.example.codeandcoffee.ui.history.HistoryFragment;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseUser firebaseUser;
     private DatabaseReference databaseReference;
+    private DatabaseReference databaseHistory;
     ActivityMainBinding binding;
 
 
@@ -48,6 +50,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser != null) {
+            PaymentActivity.email = firebaseUser.getEmail();
+
+        }
+        databaseHistory = FirebaseDatabase.getInstance().getReference("history");
+        databaseHistory.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                PaymentActivity.orderHistoryItems.clear();
+
+                for(DataSnapshot historyDataSnapshot: snapshot.getChildren()) {
+                    OrderHistoryItem orderHistoryItem = historyDataSnapshot.getValue(OrderHistoryItem.class);
+                    if (orderHistoryItem != null && orderHistoryItem.getGmail() != null && orderHistoryItem.getGmail().equals(PaymentActivity.email)) {
+                        PaymentActivity.orderHistoryItems.add(orderHistoryItem);
+                    }
+                }
+
+                // Notify your adapter (if you are using one) that the data has changed
+                // historyAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
+            }
+        });
 
         goToFragment(new HomeFragment());
 
@@ -74,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 goToFragment(new MenuFragment());
             }
             if (item.getItemId() == R.id.nav_history) {
+
                 goToFragment(new HistoryFragment());
             }
             if (item.getItemId() == R.id.nav_account) {

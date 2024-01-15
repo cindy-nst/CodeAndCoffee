@@ -3,6 +3,7 @@ package com.example.codeandcoffee.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -37,6 +38,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         holder.itemPrice.setText(historyItem.getPrice());
         holder.itemQty.setText(String.valueOf(historyItem.getQuantity()));
         holder.itemDesc.setText(historyItem.getOrderDetail());
+        holder.imageView.setImageResource(historyItem.getImageCoffee());
         // Set the image here if you have an image property in OrderHistoryItem
     }
 
@@ -52,6 +54,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         private TextView itemPrice;
         private TextView itemQty;
         private TextView itemDesc;
+        private ImageView imageView;
 
         private RatingBar ratingBar;
 
@@ -62,6 +65,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             itemPrice = itemView.findViewById(R.id.tv_historyprice);
             itemQty = itemView.findViewById(R.id.tv_historyqty);
             itemDesc = itemView.findViewById(R.id.tv_historydesc);
+            imageView = itemView.findViewById(R.id.image_item);
         }
     }
 }

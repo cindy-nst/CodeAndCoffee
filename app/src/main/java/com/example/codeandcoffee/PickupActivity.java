@@ -25,12 +25,15 @@ import com.example.codeandcoffee.object.CoffeeMenuItem;
 import com.example.codeandcoffee.object.OrderMenu;
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class PickupActivity extends AppCompatActivity {
-
+    public static String selectedDate;
+    public static String selectedTime;
     public static List<OrderMenu> MenuCart = new ArrayList<>();
     private TextView addItem;
     private static TextView Subtotal;
@@ -49,6 +52,9 @@ public class PickupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pickup);
+
+        Calendar currentTime = Calendar.getInstance();
+        selectedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Calendar.getInstance().getTime());
 
         tvTimeOrder = findViewById(R.id.tv_time_order);
 
@@ -126,6 +132,7 @@ public class PickupActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(PickupActivity.this, PaymentActivity.class);
+                            intent.putExtra("selectedDate", selectedDate);
                             startActivity(intent);
                         }
                     });
@@ -155,8 +162,11 @@ public class PickupActivity extends AppCompatActivity {
 
 
     }
-    private void showTimePickerDialog() {
+
+    /*private void showTimePickerDialog() {
         Calendar currentTime = Calendar.getInstance();
+        selectedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Calendar.getInstance().getTime());
+        selectedTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(currentTime.getTime());
         int hour = currentTime.get(Calendar.HOUR_OF_DAY);
         int minute = currentTime.get(Calendar.MINUTE);
 
@@ -185,7 +195,43 @@ public class PickupActivity extends AppCompatActivity {
         });
 
         timePickerDialog.show();
+    }*/
+    private void showTimePickerDialog() {
+        Calendar currentTime = Calendar.getInstance();
+        selectedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Calendar.getInstance().getTime());
+
+        int hour = currentTime.get(Calendar.HOUR_OF_DAY);
+        int minute = currentTime.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        if (asapSelected) {
+                            handleASAPOption();
+                        } else {
+                            // Format selectedTime inside this callback
+                            selectedTime = String.format("%02d:%02d", hourOfDay, minute);
+                            tvTimeOrder.setText(selectedTime);
+                        }
+                    }
+                },
+                hour,
+                minute,
+                true
+        );
+
+        timePickerDialog.setButton(TimePickerDialog.BUTTON_NEUTRAL, "ASAP", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                handleASAPOption();
+            }
+        });
+
+        timePickerDialog.show();
     }
+
 
     private void handleASAPOption() {
         Toast.makeText(this, "ASAP Option Selected", Toast.LENGTH_SHORT).show();
@@ -193,10 +239,13 @@ public class PickupActivity extends AppCompatActivity {
     }
 
     private void updateOrderTime(int hour, int minute) {
+
         if (hour == 0 && minute == 0) {
             tvTimeOrder.setText("ASAP");
+
+
         } else {
-            String selectedTime = String.format("%02d:%02d", hour, minute);
+            selectedTime = String.format("%02d:%02d", hour, minute);
             tvTimeOrder.setText(selectedTime);
         }
     }
