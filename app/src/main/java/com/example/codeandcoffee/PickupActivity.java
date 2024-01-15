@@ -53,79 +53,62 @@ public class PickupActivity extends AppCompatActivity {
 
         tvTimeOrder = findViewById(R.id.tv_time_order);
 
-        // Set click listener for the "Change time" TextView
         TextView tvChangeTime = findViewById(R.id.tv_change_time);
         tvChangeTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Show the time picker dialog with an additional option for ASAP
                 showTimePickerDialog();
             }
         });
 
-        // Load the ASAP preference and set its initial value
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         asapSelected = preferences.getBoolean(ASAP_PREFERENCE_KEY, false);
-
-        // Handle ASAP option based on its initial value
         if (asapSelected) {
             handleASAPOption();
         }
     }
 
     private void showTimePickerDialog() {
-        // Get the current time
         Calendar currentTime = Calendar.getInstance();
         int hour = currentTime.get(Calendar.HOUR_OF_DAY);
         int minute = currentTime.get(Calendar.MINUTE);
 
-        // Create a TimePickerDialog
         TimePickerDialog timePickerDialog = new TimePickerDialog(
                 this,
                 new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        // Check if ASAP is selected
                         if (asapSelected) {
-                            // Handle ASAP option
                             handleASAPOption();
                         } else {
-                            // Update the TextView with the selected time
                             updateOrderTime(hourOfDay, minute);
                         }
                     }
                 },
                 hour,
                 minute,
-                true // 24-hour format
+                true
         );
 
-        // Add an option for ASAP
         timePickerDialog.setButton(TimePickerDialog.BUTTON_NEUTRAL, "ASAP", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Handle ASAP option
                 handleASAPOption();
             }
         });
 
-        // Show the TimePickerDialog
         timePickerDialog.show();
     }
 
     private void handleASAPOption() {
-        // Handle the ASAP option here
         Toast.makeText(this, "ASAP Option Selected", Toast.LENGTH_SHORT).show();
-        // Update the TextView with ASAP
-        updateOrderTime(0, 0); // You can adjust this to represent ASAP in your application
+        updateOrderTime(0, 0);
     }
 
     private void updateOrderTime(int hour, int minute) {
-        // Check if the selected time is 00:00, then set a custom label like "ASAP"
         if (hour == 0 && minute == 0) {
             tvTimeOrder.setText("ASAP");
         } else {
-            // Update the TextView with the selected time
             String selectedTime = String.format("%02d:%02d", hour, minute);
             tvTimeOrder.setText(selectedTime);
         }
