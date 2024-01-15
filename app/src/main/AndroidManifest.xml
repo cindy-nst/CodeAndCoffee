@@ -28,6 +28,9 @@
             android:name=".HelpCentreActivity"
             android:exported="false" />
         <activity
+            android:name=".ContactUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".FeedbackActivity"
             android:exported="false"
             android:label="@string/title_activity_feedback"
