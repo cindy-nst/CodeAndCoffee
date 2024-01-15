@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
+
 public class OrderActivity extends AppCompatActivity {
     int jumlah = 1;
     double coffeePrice;
@@ -25,6 +27,13 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+        MaterialToolbar toolbar = findViewById(R.id.toolbar_order);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Order");
+            toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
+        }
 
         name = findViewById(R.id.tv_title);
         description = findViewById(R.id.tv_desc);

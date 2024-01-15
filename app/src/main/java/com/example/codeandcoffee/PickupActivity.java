@@ -18,6 +18,8 @@ public class PickupActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
             getSupportActionBar().setTitle("Pick Up");
+            toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
+
         }
     }
 }

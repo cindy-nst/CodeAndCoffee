@@ -7,7 +7,7 @@
     tools:context=".EditProfileActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar_signup"
+        android:id="@+id/toolbar_edit_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#855748"
