@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.object.CoffeeMenuItem;
@@ -45,9 +46,16 @@ public class MenuFragment extends Fragment {
     private String mParam2;
 
     private Button buttonCart;
-
+    private TextView tvCount;
+    private TextView tvTotal;
+    public void updateItemCount() {
+        if (tvCount != null) {
+            tvCount.setText(String.valueOf(PickupActivity.MenuCart.size()) + " items");
+        }
+    }
     public MenuFragment() {
         // Required empty public constructor
+        updateItemCount();
     }
 
     /**
@@ -77,6 +85,7 @@ public class MenuFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        updateItemCount();
     }
 
     @Override
@@ -86,12 +95,17 @@ public class MenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         buttonCart = view.findViewById(R.id.btn_cart);
+        tvCount = view.findViewById(R.id.items_count);
+        tvTotal = view.findViewById(R.id.cart_price);
+        updateItemCount();
+
         buttonCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PickupActivity.class);
                 //intent.putParcelableArrayListExtra("orderMenuList", new ArrayList<>(menuList));
                 v.getContext().startActivity(intent);
+
             }
         });
 
@@ -106,23 +120,6 @@ public class MenuFragment extends Fragment {
         return view;
     }
 
-    /*private List<CoffeeMenuItem> generateCoffeeMenu() {
-        List<CoffeeMenuItem> coffeeMenu = new ArrayList<>();
-
-        // Sample coffee menu items with image resource IDs
-        coffeeMenu.add(new CoffeeMenuItem("Espresso", 2.99, R.drawable.espressocoffee,
-                "Espresso is a concentrated coffee served in small shots, made by forcing hot water through finely-ground coffee beans."));
-        coffeeMenu.add(new CoffeeMenuItem("Latte", 4.49, R.drawable.lattecoffee,
-                "A latte is a coffee beverage consisting of espresso and steamed milk, topped with frothed milk for a creamy texture."));
-        coffeeMenu.add(new CoffeeMenuItem("Cappuccino", 3.99, R.drawable.cappuccinocoffee,
-                "Cappuccino is a balanced blend of espresso, steamed milk, and frothed milk, creating a rich and creamy coffee experience."));
-        coffeeMenu.add(new CoffeeMenuItem("Americano", 3.29, R.drawable.americanocoffee,
-                "An Americano is a diluted espresso, made by adding hot water to a shot of espresso, resulting in a coffee with a strength between espresso and drip coffee."));
-
-        // Add more coffee items as needed
-
-        return coffeeMenu;
-    }*/
     private void generateCoffeeMenu() {
 
         // Clear the menuList

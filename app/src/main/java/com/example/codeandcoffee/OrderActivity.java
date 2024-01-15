@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.codeandcoffee.object.OrderMenu;
+import com.example.codeandcoffee.ui.menu.MenuFragment;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class OrderActivity extends AppCompatActivity {
     Button reg,large,normal,half,slight,non,addtocart;
     CheckBox whipped,cardriz,chocodriz;
     ImageView pic;
+    boolean normalsugar, halfsugar, slightsugar,nonsugar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +120,10 @@ public class OrderActivity extends AppCompatActivity {
         half.setBackgroundTintList(getResources().getColorStateList(R.color.diselect));
         slight.setBackgroundTintList(getResources().getColorStateList(R.color.diselect));
         non.setBackgroundTintList(getResources().getColorStateList(R.color.diselect));
+        normalsugar=true;
+        halfsugar=false;
+        slightsugar=false;
+        nonsugar=false;
 
         normal.setOnClickListener(this::onClick);
         half.setOnClickListener(this::onClick);
@@ -161,6 +167,14 @@ public class OrderActivity extends AppCompatActivity {
                     odrDetail = "Large";
                 else
                     odrDetail = "Regular";
+                if(normalsugar)
+                    odrDetail += ", Normal";
+                if(halfsugar)
+                    odrDetail += ", Half";
+                if(slightsugar)
+                    odrDetail += ", Slight";
+                if(nonsugar)
+                    odrDetail += ", Non";
                 if(whipCreme)
                     odrDetail += ", Whipped Creme";
                 if(caramel)
@@ -168,7 +182,22 @@ public class OrderActivity extends AppCompatActivity {
                 if(choco)
                     odrDetail += ", Chocolate Drizzle";
 
-                PickupActivity.MenuCart.add(new OrderMenu(intent.getStringExtra("coffeeName"), coffeePrice, intent.getIntExtra("coffeeImage",0), intent.getStringExtra("coffeeDescription"),jumlah,odrDetail, whipCreme,caramel,choco));
+                // Check if the item already exists in the cart
+                boolean itemExists = false;
+                for (OrderMenu orderMenu : PickupActivity.MenuCart) {
+                    if (orderMenu.getName().equals(intent.getStringExtra("coffeeName")) && orderMenu.getOrderDetail().equals(odrDetail)) {
+                        // Item already exists, update the quantity
+                        orderMenu.setQuantity(orderMenu.getQuantity() + jumlah);
+                        itemExists = true;
+                        break;
+                    }
+                }
+
+                // If the item doesn't exist, add it to the cart
+                if (!itemExists) {
+                    PickupActivity.MenuCart.add(new OrderMenu(intent.getStringExtra("coffeeName"), coffeePrice, intent.getIntExtra("coffeeImage", 0), intent.getStringExtra("coffeeDescription"), jumlah, odrDetail, whipCreme, caramel, choco));
+                }
+
                 Intent intent = new Intent(OrderActivity.this, MainActivity.class);
                 intent.setAction(MainActivity.ACTION_SHOW_MENU_FRAGMENT);
                 startActivity(intent);
@@ -203,15 +232,31 @@ public class OrderActivity extends AppCompatActivity {
         non = findViewById(R.id.btn_non_sugar);
         if(id == R.id.btn_normal_sugar){
             normal.setBackgroundTintList(getResources().getColorStateList(R.color.select));
+            normalsugar=true;
+            halfsugar=false;
+            slightsugar=false;
+            nonsugar=false;
         }
         else if(id == R.id.btn_half_sugar){
             half.setBackgroundTintList(getResources().getColorStateList(R.color.select));
+            normalsugar=false;
+            halfsugar=true;
+            slightsugar=false;
+            nonsugar=false;
         }
         else if(id == R.id.btn_slight_sugar){
             slight.setBackgroundTintList(getResources().getColorStateList(R.color.select));
+            normalsugar=false;
+            halfsugar=false;
+            slightsugar=true;
+            nonsugar=false;
         }
         else if(id == R.id.btn_non_sugar){
             non.setBackgroundTintList(getResources().getColorStateList(R.color.select));
+            normalsugar=false;
+            halfsugar=false;
+            slightsugar=false;
+            nonsugar=true;
         }
     }
 }

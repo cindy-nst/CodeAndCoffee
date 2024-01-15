@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.object.CoffeeMenuItem;
 import com.example.codeandcoffee.object.OrderMenu;
+import com.example.codeandcoffee.ui.menu.MenuFragment;
 
 import java.util.List;
 
@@ -119,6 +120,7 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
 
                         // Dismiss the dialog
                         dialog.dismiss();
+
                     }
                 }
             });
@@ -129,6 +131,7 @@ public class OrderRecycleViewAdapter extends RecyclerView.Adapter<OrderRecycleVi
                     quantity = 1;
                     itemQuantity.setText(String.valueOf(quantity));
                     showprice();
+
 
                     // Dismiss the dialog
                     dialog.dismiss();

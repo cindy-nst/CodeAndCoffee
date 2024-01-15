@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.codeandcoffee.adapter.OrderRecycleViewAdapter;
 import com.example.codeandcoffee.object.CoffeeMenuItem;
@@ -28,7 +29,15 @@ public class PickupActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(Boolean.TRUE);
             getSupportActionBar().setTitle("Pick Up");
-            toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
+            //toolbar.setNavigationOnClickListener(view -> getOnBackPressedDispatcher().onBackPressed());
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PickupActivity.this, MainActivity.class);
+                    intent.setAction(MainActivity.ACTION_SHOW_MENU_FRAGMENT);
+                    startActivity(intent);
+                }
+            });
 
         }
 
