@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 PaymentActivity.orderHistoryItems.clear();
 
-                for(DataSnapshot historyDataSnapshot: snapshot.getChildren()) {
+                for (DataSnapshot historyDataSnapshot : snapshot.getChildren()) {
                     OrderHistoryItem orderHistoryItem = historyDataSnapshot.getValue(OrderHistoryItem.class);
                     if (orderHistoryItem != null && orderHistoryItem.getGmail() != null && orderHistoryItem.getGmail().equals(PaymentActivity.email)) {
                         PaymentActivity.orderHistoryItems.add(orderHistoryItem);
@@ -135,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_logout) {
+            getApplicationContext().deleteSharedPreferences("Pref");
+            getApplicationContext().deleteSharedPreferences("Settings");
             firebaseAuth.signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
@@ -164,25 +166,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveUserInfo() {
         databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("user_details").orderByChild("email").equalTo(firebaseUser.getEmail()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    UserDetails userDetails = dataSnapshot.getValue(UserDetails.class);
+        databaseReference.child("user_details")
+                .orderByChild("email")
+                .equalTo(firebaseUser.getEmail())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            UserDetails userDetails = dataSnapshot.getValue(UserDetails.class);
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("Pref", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    Gson gson = new Gson();
-                    String str = gson.toJson(userDetails);
-                    editor.putString("User", str);
-                    editor.apply();
-                }
-            }
+                            SharedPreferences sharedPreferences = getSharedPreferences("Pref", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            Gson gson = new Gson();
+                            String str = gson.toJson(userDetails);
+                            editor.putString("User", str);
+                            editor.apply();
+                        }
+                    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
 
     }
 

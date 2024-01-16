@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
     private int[] sliderImages = {R.drawable.slider_1, R.drawable.slider_2, R.drawable.slider_3, R.drawable.slider_4, R.drawable.slider_5, R.drawable.slider_6};
 
     private TextView tvUsernameDisplay;
-    private String username;
+    private String greetingMessage;
     private SharedPreferences sharedPreferences;
     private UserDetails userDetails;
 
@@ -51,26 +51,32 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        userDetails = loadUserInfo();
+        LocalTime localTime = LocalTime.now();
+        if (localTime.getHour() >= 6 && localTime.getHour() < 12) {
+            greetingMessage = "Good Morning, " + userDetails.getUsername();
+        } else if (localTime.getHour() >= 12 && localTime.getHour() < 18) {
+            greetingMessage = "Good Afternoon, " + userDetails.getUsername();
+        } else {
+            greetingMessage = "Good Evening, " + userDetails.getUsername();
+        }
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         tvUsernameDisplay = view.findViewById(R.id.tv_username_display);
-
-        userDetails = loadUserInfo();
-        LocalTime localTime = LocalTime.now();
-        if (localTime.getHour() >= 6 && localTime.getHour() < 12) {
-            tvUsernameDisplay.setText("Good Morning, " + userDetails.getUsername());
-        } else if (localTime.getHour() >= 12 && localTime.getHour() < 18) {
-            tvUsernameDisplay.setText("Good Afternoon, " + userDetails.getUsername());
-        } else {
-            tvUsernameDisplay.setText("Good Evening, " + userDetails.getUsername());
-        }
-
+//        userDetails = loadUserInfo();
+//        LocalTime localTime = LocalTime.now();
+//        if (localTime.getHour() >= 6 && localTime.getHour() < 12) {
+//            tvUsernameDisplay.setText("Good Morning, " + userDetails.getUsername());
+//        } else if (localTime.getHour() >= 12 && localTime.getHour() < 18) {
+//            tvUsernameDisplay.setText("Good Afternoon, " + userDetails.getUsername());
+//        } else {
+//            tvUsernameDisplay.setText("Good Evening, " + userDetails.getUsername());
+//        }
+        tvUsernameDisplay.setText(greetingMessage);
         viewFlipper = view.findViewById(R.id.viewFlipper);
         for (int resId : sliderImages) {
             addImageToViewFlipper(resId);

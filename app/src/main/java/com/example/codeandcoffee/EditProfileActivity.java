@@ -147,6 +147,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                         }
                     }
                 }
+
+                finish();
             }
 
             @Override

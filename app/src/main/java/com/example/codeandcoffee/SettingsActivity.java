@@ -98,6 +98,8 @@ public class SettingsActivity extends AppCompatActivity {
                             user.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
+                                            getApplicationContext().deleteSharedPreferences("Pref");
+                                            getApplicationContext().deleteSharedPreferences("Settings");
                                             Toast.makeText(getApplicationContext(), "Delete account successful", Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(SettingsActivity.this, LoginActivity.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

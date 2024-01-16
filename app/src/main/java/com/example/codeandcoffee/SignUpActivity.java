@@ -56,7 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btn_sign_up);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("user_details");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
 
         etBirthday.setOnClickListener(new View.OnClickListener() {
@@ -121,8 +121,8 @@ public class SignUpActivity extends AppCompatActivity {
     private void addUser(String username, String phoneNumber, String email, String birthday) {
         String userId = databaseReference.push().getKey();
         UserDetails userDetails = new UserDetails(userId, username, email, phoneNumber, birthday);
+        databaseReference.child("user_details").child(userId).setValue(userDetails);
         if (!TextUtils.isEmpty(userId)) {
-            databaseReference.child(userId).setValue(userDetails);
             etUsername.setText("");
             etPhoneNumber.setText("");
             etEmail.setText("");
