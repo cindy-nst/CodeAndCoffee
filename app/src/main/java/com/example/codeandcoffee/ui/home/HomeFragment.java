@@ -67,15 +67,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         tvUsernameDisplay = view.findViewById(R.id.tv_username_display);
-//        userDetails = loadUserInfo();
-//        LocalTime localTime = LocalTime.now();
-//        if (localTime.getHour() >= 6 && localTime.getHour() < 12) {
-//            tvUsernameDisplay.setText("Good Morning, " + userDetails.getUsername());
-//        } else if (localTime.getHour() >= 12 && localTime.getHour() < 18) {
-//            tvUsernameDisplay.setText("Good Afternoon, " + userDetails.getUsername());
-//        } else {
-//            tvUsernameDisplay.setText("Good Evening, " + userDetails.getUsername());
-//        }
         tvUsernameDisplay.setText(greetingMessage);
         viewFlipper = view.findViewById(R.id.viewFlipper);
         for (int resId : sliderImages) {
