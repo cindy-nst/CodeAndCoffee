@@ -82,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 signUpUser();
-                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                //startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
             }
         });
     }
@@ -101,6 +101,20 @@ public class SignUpActivity extends AppCompatActivity {
             dialog.show();
         } else {
 
+            /*firebaseAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                addUser(etUsername.getText().toString(), "+60" + etPhoneNumber.getText().toString(), etEmail.getText().toString(), etBirthday.getText().toString());
+                                Log.d(TAG, "createUserWithEmail:success");
+                                Toast.makeText(SignUpActivity.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(SignUpActivity.this, "Failed to sign up", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });*/
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -109,6 +123,9 @@ public class SignUpActivity extends AppCompatActivity {
                                 addUser(etUsername.getText().toString(), "+60" + etPhoneNumber.getText().toString(), etEmail.getText().toString(), etBirthday.getText().toString());
                                 Log.d(TAG, "createUserWithEmail:success");
                                 Toast.makeText(SignUpActivity.this, "Sign Up Success", Toast.LENGTH_SHORT).show();
+
+                                // Move the startActivity call here, after adding user details
+                                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                             } else {
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(SignUpActivity.this, "Failed to sign up", Toast.LENGTH_SHORT).show();
