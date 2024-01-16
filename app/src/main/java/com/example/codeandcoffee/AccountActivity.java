@@ -47,8 +47,7 @@ public class AccountActivity extends AppCompatActivity {
         orderTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AccountActivity.this, MainActivity.class);
-                intent.setAction(MainActivity.ACTION_SHOW_MENU_FRAGMENT);
+                Intent intent = new Intent(AccountActivity.this, OrderActivity.class);
                 startActivity(intent);
             }
         });

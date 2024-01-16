@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.codeandcoffee.AccountActivity;
 import com.example.codeandcoffee.EditProfileActivity;
 import com.example.codeandcoffee.FeedbackActivity;
+import com.example.codeandcoffee.MainActivity;
 import com.example.codeandcoffee.OrderActivity;
 import com.example.codeandcoffee.R;
 import com.example.codeandcoffee.SettingsActivity;
@@ -74,7 +75,8 @@ public class AccountFragment extends Fragment {
         orderTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), OrderActivity.class);
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.setAction(MainActivity.ACTION_SHOW_MENU_FRAGMENT);
                 startActivity(intent);
             }
         });

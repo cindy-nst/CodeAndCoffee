@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        goToFragment(new HomeFragment());
+
+        // Handle the intent action
+        handleIntentAction(getIntent());
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             PaymentActivity.email = firebaseUser.getEmail();
@@ -79,10 +84,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        goToFragment(new HomeFragment());
-
-        // Handle the intent action
-        handleIntentAction(getIntent());
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar_homepage);
         setSupportActionBar(toolbar);
